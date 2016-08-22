@@ -125,6 +125,52 @@
         );                
     }); 
      
+        /* button  #btncancelaraluno */
+    $(document).on("click", "#btncancelaraluno", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#sbpalunos"); 
+         return false;
+    });
+    
+        /* button  #btncancelarprofessor */
+    $(document).on("click", "#btncancelarprofessor", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#sbpprofessores"); 
+         return false;
+    });
+    
+        /* button  #btnsalvarprofessor */
+    $(document).on("click", "#btnsalvarprofessor", function(evt)
+    {
+        navigator.notification.confirm(
+         'Deseja realmente salvar?',
+         function (buttonIndex) {
+             if(buttonIndex == 1) {
+                 //salvar
+                 navigator.notification.beep(1);
+             }
+         })  
+        /* your code goes here */ 
+         return false;
+    }); 
+     
+     /* button  #btnsalvaraluno */
+    $(document).on("click", "#btnsalvaraluno", function(evt)
+    {
+        navigator.notification.confirm(
+         'Deseja realmente salvar?',
+         function (buttonIndex) {
+             if(buttonIndex == 1) {
+                 //salvar
+                 navigator.notification.beep(1);
+             }
+         })  
+        /* your code goes here */ 
+         return false;
+    });
+    
     }
  document.addEventListener("app.Ready", register_event_handlers, false);
 })();
