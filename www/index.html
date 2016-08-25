@@ -74,14 +74,16 @@
         <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
         <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
 
-        <script type="application/javascript" src="js/index_user_scripts.js"></script>
         <script type="application/javascript" src="xdk/ad/ionic_subpage.js"></script>
         <script type="application/javascript" src="js/index_uib_w_11_popup.js"></script>
 
         <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
         <script type="application/javascript" src="js/index_uib_w_38_popup.js"></script>
 
-        <script src="js/bd.js"></script>
+        <script type="application/javascript" src="js/web-sql-storage.js"></script>
+
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="xdk/ad/ionic_subpage.js"></script>
 
     </head>
 
@@ -150,7 +152,7 @@
                         <button class="button widget uib_w_12 d-margins ion ion-close-circled icon-left" data-uib="ionic/button" data-ver="0" id="btnsair">Sair</button>
                     </div>
                 </div>
-<!-- PÁGINA DE LISTA DE ALUNOS -->
+                <!-- PÁGINA DE LISTA DE ALUNOS -->
                 <div id="sbpalunos" class="upage-content hidden vertical-col">
 
                     <div class="uib-grid widget uib_w_13 grid-text grid-height d-margins rest-of-height" data-uib="layout/grid" data-ver="1">
@@ -162,10 +164,10 @@
                                 <button class="button widget uib_w_15 d-margins ion ion-android-add icon-left" data-uib="ionic/button" data-ver="0" id="btnnovoaluno"></button>
                             </div>
                         </div>
+
                     </div>
-<!-- LISTA DE ALUNOS -->
-                    <ion-list class="widget uib_w_38 d-margins" data-uib="ionic/list" data-ver="0" id="alunos">                 
-                        <p id="semErros" style="display:none;">Nenhum aluno cadastrado!</p>
+                    <ion-list class="widget uib_w_46 d-margins" data-uib="ionic/list" data-ver="0" id="lstalunos">
+
                     </ion-list>
                 </div>
 
@@ -179,32 +181,22 @@
                     <div class="widget uib_w_19 scale-image d-margins" data-uib="media/img" data-ver="0">
                         <figure class="figure-align">
                             <img src="images/Strabburg.jpg" id="imgaluno">
+
                             <figcaption data-position="bottom"></figcaption>
                         </figure>
                     </div>
 
                     <label class="item item-input widget uib_w_20 d-margins" data-uib="ionic/input" data-ver="0" id="NomeAluno">
-                        <input type="text" placeholder="Nome" id="nomeAluno">
+                        <input type="text" placeholder="Nome" id="txtnomealuno">
                     </label>
                     <label class="item item-input widget uib_w_21 d-margins" data-uib="ionic/input" data-ver="0">
-                        <input type="text" placeholder="Idade">
+                        <input type="text" placeholder="Idade" id="txtidadealuno">
                     </label>
                     <label class="item item-input widget uib_w_22 d-margins" data-uib="ionic/input" data-ver="0">
-                        <input type="text" placeholder="Peso">
+                        <input type="text" placeholder="Peso" id="txtpesoaluno">
                     </label>
-
-                    <label class="item item-input item-select widget uib_w_23 d-margins" data-uib="ionic/select" data-ver="0">
-                        <div class="input-label">Faixa</div>
-                        <select>
-                            <option>Branca</option>
-                            <option>Azul</option>
-                            <option>Roxa</option>
-                            <option>Marrom</option>
-                            <option>Preta</option>
-                        </select>
-                    </label>
-                    <label class="item item-input widget uib_w_24 d-margins" data-uib="ionic/input" data-ver="0"><span class="input-label">Exame de faixa:</span>
-                        <input type="text" placeholder="DD/MM/AAAA">
+                    <label class="item item-input widget uib_w_23 d-margins" data-uib="ionic/input" data-ver="0">
+                        <input type="text" placeholder="Faixa" id="txtfaixaaluno">
                     </label>
                     <div class="uib-grid widget uib_w_34 grid-text grid-height d-margins" data-uib="layout/grid" data-ver="1">
                         <div class="uib-grid-row">

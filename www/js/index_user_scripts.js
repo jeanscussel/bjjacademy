@@ -1,3 +1,14 @@
+var db = new WebSqlDB(sucesso, erro);
+
+function sucesso() {
+    console.log("sucesso DB!");
+}
+
+function erro(error) {
+    console.log("Erro de DB: " + error);
+}
+
+
 /*jshint browser:true */
 /*global $ */(function()
 {
@@ -6,26 +17,16 @@
    hook up event handlers 
  */
  function register_event_handlers()
- {
-    
-    
-     /* button  #btnmenu */
+ {  
+     
+/* button  #btnmenu */
     $(document).on("click", "#btnmenu", function(evt)
-    {
-         /*global uib_sb */
-         /* Other possible functions are: 
-           uib_sb.open_sidebar($sb)
-           uib_sb.close_sidebar($sb)
-           uib_sb.toggle_sidebar($sb)
-            uib_sb.close_all_sidebars()
-          See js/sidebar.js for the full sidebar API */
-        
+    {     
          uib_sb.toggle_sidebar($("#sbmenu"));  
          return false;
     });
-     
-    
-        /* button  #btnsair */
+         
+/* button  #btnsair */
     $(document).on("click", "#btnsair", function(evt)
     {
         navigator.notification.confirm(
@@ -36,30 +37,17 @@
                  navigator.app.exitApp();
              }
          })  
-        
-        /* your code goes here */ 
-         return false;
-    });
-    
-        /* button  #btnalunos */
-    $(document).on("click", "#btnalunos", function(evt)
-    {
-         uib_sb.close_sidebar($("#sbmenu"));
-        
-         /*global activate_subpage */
-         activate_subpage("#sbpalunos"); 
          return false;
     });
      
-     
-     /* button  #btnaddaluno */
+/* button  #btnaddaluno */
         $(document).on("click", "#addaluno", function (evt) {
             /*global activate_subpage */
             activate_subpage("#sbalunos");
             return false;
         });
     
-        /* button  #btnvoltaralunos */
+/* button  #btnvoltaralunos */
     $(document).on("click", "#btnvoltaralunos", function(evt)
     {
          /*global activate_subpage */
@@ -67,7 +55,7 @@
          return false;
     });
     
-        /* button  #btnvoltarprofessores */
+/* button  #btnvoltarprofessores */
     $(document).on("click", "#btnvoltarprofessores", function(evt)
     {
          /*global activate_subpage */
@@ -75,7 +63,7 @@
          return false;
     });
     
-        /* button  #btnprofessores */
+/* button  #btnprofessores */
     $(document).on("click", "#btnprofessores", function(evt)
     {
         uib_sb.close_sidebar($("#sbmenu"));
@@ -84,7 +72,7 @@
          return false;
     });
     
-        /* button  #btnnovoaluno */
+/* button  #btnnovoaluno */
     $(document).on("click", "#btnnovoaluno", function(evt)
     {
          /*global activate_subpage */
@@ -92,7 +80,7 @@
          return false;
     });
     
-        /* button  #btnnovoprofessor */
+/* button  #btnnovoprofessor */
     $(document).on("click", "#btnnovoprofessor", function(evt)
     {
          /*global activate_subpage */
@@ -125,7 +113,7 @@
         );                
     }); 
      
-        /* button  #btncancelaraluno */
+/* button  #btncancelaraluno */
     $(document).on("click", "#btncancelaraluno", function(evt)
     {
          /*global activate_subpage */
@@ -133,7 +121,7 @@
          return false;
     });
     
-        /* button  #btncancelarprofessor */
+/* button  #btncancelarprofessor */
     $(document).on("click", "#btncancelarprofessor", function(evt)
     {
          /*global activate_subpage */
@@ -141,7 +129,7 @@
          return false;
     });
     
-        /* button  #btnsalvarprofessor */
+/* button  #btnsalvarprofessor */
     $(document).on("click", "#btnsalvarprofessor", function(evt)
     {
         navigator.notification.confirm(
@@ -156,7 +144,7 @@
          return false;
     }); 
      
-     /* button  #btnsalvaraluno */
+/* button  #btnsalvaraluno */
     $(document).on("click", "#btnsalvaraluno", function(evt)
     {
         navigator.notification.confirm(
@@ -170,58 +158,59 @@
         /* your code goes here */ 
          return false;
     });
-     
 
-     
-/* button  #IncluirAluno */
-    $(document).on("click", "#IncluirAluno", function(evt)
-    { 
-        var i = Number(localStorage.getItem('aluno-contador')) + 1;
-	    var j, k, orderList;
-	    var $aluno = $("#NomeAluno");
-	    var $alunoList = $("#alunos");
-	    var order = [];
-	    orderList = localStorage.getItem('aluno-cadastro');
-	
-	    if(!orderList){
-		   $("#semErros").css("display","block");
-	    }
-        // Carregar Lista de Alunos
-		
-		orderList = orderList ? orderList.split(',') : [];   
-		for( j = 0, k = orderList.length; j < k; j++) {
-			$alunoList.append(
-				"<li id='" + orderList[j] + "'>"
-				+ "<a class='editable' data-split-theme='c'>"	
-				+ localStorage.getItem(orderList[j]) 
-				+ "</a> <a href='#' class='close' data-icon='delete' data-theme='c'>X</a></li>"
-			);
-		}
     
-	    // Incluir Alunos 
-	    $("#sbalunos").live("tap", function() {
-		   if($aluno.val() != ""){
-			  localStorage.setItem("aluno-"+i, $aluno.val());
-			  localStorage.setItem("aluno-contador",i);
-			  $("#semErros").css("display","none");
-			  $alunoList.append(
-				     "<li id='aluno-" + i + "'>" 
-				     +  "<a class='editable' data-split-theme='c'>" 
-				     + localStorage.getItem("aluno-" + i) 
-				     + " </a><a href='#' data-icon='delete' class='close' data-theme='c'>x</a></li>"
-			  );
-			  $.mobile.changePage("#sbpalunos", { transition: "slidedown"});		
-			  listaAlunos();
-			  $aluno.val("");
-			  i++
-            } 
-		    return false;     
-        
-        });
+/* button  #btnalunos */
+    $(document).on("click", "#btnalunos", function(evt)
+    {   
+        uib_sb.close_sidebar($("#sbmenu"));
+             
+            // listar alunos
+            db.findAlunoAll(function (alunos) {
+                // limpando a lista
+                $("#lstalunos").html("");
+                for (var i = 0; i < alunos.length; i++) {
+                    // adicionando os itens na lista
+                    $("#lstalunos").prepend(
+                        '<ion-item id="' + alunos[i].codalu + '" class="item widget uib_w_6 item-button-right" data-uib="ionic/list_item" data-ver="0"> ' +
+                        '<div class="buttons"> ' +
+                        ' <button id="' + alunos[i].codalu + '" class="button button-positive"><i class="icon icon ion-edit"></i>                    </button> ' +
+                        ' <button id="' + alunos[i].codalu + '" name = "' + i + '" class="button button-assertive"><i class="icon icon ion-trash-b"></i> ' +
+                        ' </button>' +
+                        ' </div>' +
+                        '<img src="' + alunos[i].fotalu + '" height="32" width="32"> ' +
+                        alunos[i].nomalu + ' - ' + alunos[i].idadealu + '</ion-item>'
+                    );
+                }
+            });
+
+            /*global activate_subpage */
+            activate_subpage("#sbpalunos");
             return false;
     });
     
-}
+/* button  #IncluirAluno */
+    $(document).on("click", "#IncluirAluno", function(evt)
+    { 
+            db.insertAluno(JSON.stringify({
+                "nomealu": $("#txtnomealuno").val(),
+                "idadealu": $("#txtidadealuno").val(),
+                "pesoalu": $("#txtpesoaluno").val(),
+                "faixaalu": $("#txtfaixaaluno").val(),
+                "fotalu": $("#imgaluno").attr('src')
+            }), function (status) {
+                if (status === true) {
+                    // capturando os dados do aluno da tela        
+                    navigator.notification.alert(
+                        "Aluno cadastrado com sucesso!"
+                    );
+                }
+            });
+
+            return false;
+        });
+    
+    }
 
 document.addEventListener("app.Ready", register_event_handlers, false);
 })();
