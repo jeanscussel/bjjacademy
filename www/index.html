@@ -80,6 +80,9 @@
 
         <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
         <script type="application/javascript" src="js/index_uib_w_38_popup.js"></script>
+
+        <script src="js/bd.js"></script>
+
     </head>
 
     <body ng-app="myApp">
@@ -147,7 +150,7 @@
                         <button class="button widget uib_w_12 d-margins ion ion-close-circled icon-left" data-uib="ionic/button" data-ver="0" id="btnsair">Sair</button>
                     </div>
                 </div>
-
+<!-- PÁGINA DE LISTA DE ALUNOS -->
                 <div id="sbpalunos" class="upage-content hidden vertical-col">
 
                     <div class="uib-grid widget uib_w_13 grid-text grid-height d-margins rest-of-height" data-uib="layout/grid" data-ver="1">
@@ -160,6 +163,10 @@
                             </div>
                         </div>
                     </div>
+<!-- LISTA DE ALUNOS -->
+                    <ion-list class="widget uib_w_38 d-margins" data-uib="ionic/list" data-ver="0" id="alunos">                 
+                        <p id="semErros" style="display:none;">Nenhum aluno cadastrado!</p>
+                    </ion-list>
                 </div>
 
                 <ion-footer-bar class="bar inner-element uib_w_2 bar-positive bar-footer" data-uib="ionic/footer" data-ver="0">
@@ -176,8 +183,8 @@
                         </figure>
                     </div>
 
-                    <label class="item item-input widget uib_w_20 d-margins" data-uib="ionic/input" data-ver="0">
-                        <input type="text" placeholder="Nome">
+                    <label class="item item-input widget uib_w_20 d-margins" data-uib="ionic/input" data-ver="0" id="NomeAluno">
+                        <input type="text" placeholder="Nome" id="nomeAluno">
                     </label>
                     <label class="item item-input widget uib_w_21 d-margins" data-uib="ionic/input" data-ver="0">
                         <input type="text" placeholder="Idade">
@@ -205,7 +212,7 @@
                                 <button class="button widget uib_w_36 d-margins ion ion-android-close icon-left" data-uib="ionic/button" data-ver="0" id="btncancelaraluno">Cancelar</button>
                             </div>
                             <div class="uib-grid-cell widget-container">
-                                <button class="button widget uib_w_37 d-margins ion ion-android-checkmark icon-left" data-uib="ionic/button" data-ver="0" id="btnsalvaraluno">Salvar</button>
+                                <button class="button widget uib_w_37 d-margins ion ion-android-checkmark icon-left" data-uib="ionic/button" data-ver="0" id="IncluirAluno">Salvar</button>
                             </div>
                         </div>
                     </div>
@@ -222,6 +229,11 @@
                             </div>
                         </div>
                     </div>
+                    <ion-list class="widget uib_w_42 d-margins" data-uib="ionic/list" data-ver="0" id="listaProfessores">
+                        <ion-item class="item widget uib_w_43" data-uib="ionic/list_item" data-ver="0">List item</ion-item>
+                        <ion-item class="item widget uib_w_44" data-uib="ionic/list_item" data-ver="0">List item</ion-item>
+                        <ion-item class="item widget uib_w_45" data-uib="ionic/list_item" data-ver="0">List item</ion-item>
+                    </ion-list>
                 </div>
                 <div id="sbprofessor" class="upage-content hidden vertical-col">
                     <div class="widget uib_w_25 scale-image d-margins" data-uib="media/img" data-ver="0">
