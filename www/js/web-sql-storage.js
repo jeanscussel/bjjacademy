@@ -55,7 +55,6 @@ var WebSqlDB = function(successCallback, errorCallback) {
         var sqlA = "INSERT OR REPLACE INTO alunos " +
             " (codalu, nomealu, idadealu, pesoalu, faixaalu, fotalu) " +
             " VALUES (?, ?, ?, ?, ?, ?)";
-        var t;
         var a;
         
         for (var i = 0; i < la; i++) {
@@ -94,7 +93,7 @@ var WebSqlDB = function(successCallback, errorCallback) {
         );
     }
 
-    this.findAlunoById = function(codalu, callback) {        
+/*    this.findAlunoById = function(codalu, callback) {        
         this.db.transaction(
             function(tx) {
                 var sql = "SELECT * FROM alunos WHERE codalu=?";
@@ -108,14 +107,14 @@ var WebSqlDB = function(successCallback, errorCallback) {
             }
         );
     }
-
+*/
     this.insertAluno = function(json, callback) {
         // Converts a JavaScript Object Notation (JSON) string into an object.
         var parsedJson = JSON.parse(json);
         this.db.transaction(
            function (tx) {
-                var sql = "INSERT INTO alunos (nomealu, nomalu, idadealu, pesoalu, faixaalu) VALUES (?, ?, ?, ?, ?)";
-                tx.executeSql(sql, [parsedJson.nomealu, parsedJson.idadealu, parsedJson.fotalu], function(tx, result) {
+                var sql = "INSERT INTO alunos (nomealu, idadealu, pesoalu, faixaalu) VALUES (?, ?, ?, ?, ?)";
+                tx.executeSql(sql, [parsedJson.nomealu, parsedJson.idadealu, parsedJson.pesoalu, parsedJson.faixaalu, parsedJson.fotalu], function(tx, result) {
                     // If results rows
                     callback(result.rowsAffected === 1 ? true : false);
                 });

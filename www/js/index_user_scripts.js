@@ -36,7 +36,7 @@ function erro(error) {
                  //terminar app
                  navigator.app.exitApp();
              }
-         })  
+         });  
          return false;
     });
      
@@ -139,27 +139,11 @@ function erro(error) {
                  //salvar
                  navigator.notification.beep(1);
              }
-         })  
+         });  
         /* your code goes here */ 
          return false;
     }); 
-     
-/* button  #btnsalvaraluno */
-    $(document).on("click", "#btnsalvaraluno", function(evt)
-    {
-        navigator.notification.confirm(
-         'Deseja realmente salvar?',
-         function (buttonIndex) {
-             if(buttonIndex == 1) {
-                 //salvar
-                 navigator.notification.beep(1);
-             }
-         })  
-        /* your code goes here */ 
-         return false;
-    });
-
-    
+        
 /* button  #btnalunos */
     $(document).on("click", "#btnalunos", function(evt)
     {   
@@ -179,7 +163,7 @@ function erro(error) {
                         ' </button>' +
                         ' </div>' +
                         '<img src="' + alunos[i].fotalu + '" height="32" width="32"> ' +
-                        alunos[i].nomalu + ' - ' + alunos[i].idadealu + '</ion-item>'
+                        alunos[i].nomealu + ' - ' + alunos[i].idadealu + '</ion-item>'
                     );
                 }
             });
@@ -192,15 +176,18 @@ function erro(error) {
 /* button  #IncluirAluno */
     $(document).on("click", "#IncluirAluno", function(evt)
     { 
+      /*  navigator.notification.alert(
+            "TESTANDO"
+        );  */ 
+        
             db.insertAluno(JSON.stringify({
                 "nomealu": $("#txtnomealuno").val(),
                 "idadealu": $("#txtidadealuno").val(),
                 "pesoalu": $("#txtpesoaluno").val(),
                 "faixaalu": $("#txtfaixaaluno").val(),
                 "fotalu": $("#imgaluno").attr('src')
-            }), function (status) {
-                if (status === true) {
-                    // capturando os dados do aluno da tela        
+            }), function(status){
+                if (status){
                     navigator.notification.alert(
                         "Aluno cadastrado com sucesso!"
                     );
