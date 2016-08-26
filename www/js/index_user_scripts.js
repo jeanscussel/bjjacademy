@@ -173,12 +173,13 @@ function erro(error) {
             return false;
     });
     
-/* button  #IncluirAluno */
-    $(document).on("click", "#IncluirAluno", function(evt)
-    { 
-      /*  navigator.notification.alert(
-            "TESTANDO"
-        );  */ 
+    
+        /* button  #btnincluiraluno */
+    $(document).on("click", "#btnincluiraluno", function(evt)
+    {
+          navigator.notification.alert(
+            "Esse alert funciona mas o resto não!"
+        ); 
         
             db.insertAluno(JSON.stringify({
                 "nomealu": $("#txtnomealuno").val(),
@@ -193,9 +194,9 @@ function erro(error) {
                     );
                 }
             });
-
-            return false;
-        });
+ 
+         return false;
+    });
     
     }
 

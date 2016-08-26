@@ -48,7 +48,9 @@ var WebSqlDB = function(successCallback, errorCallback) {
     this.addSampleData = function(tx) {
         // Array of objects
         var alunos = [
-                {"codalu": 1, "nomealu": "Aluno 1", "idadealu": "25", "pesoalu": "90,75", "faixaalu": "Azul",fotalu: "aluno1.png"},
+                {"codalu": 1, "nomealu": "Hélio", "idadealu": "85", "pesoalu": "60,75", "faixaalu": "Vermelha",fotalu: "aluno1.png"},
+                {"codalu": 2, "nomealu": "Carlson", "idadealu": "55", "pesoalu": "90,75", "faixaalu": "Preta",fotalu: "aluno2.png"},
+                {"codalu": 3, "nomealu": "Royson", "idadealu": "39", "pesoalu": "80,75", "faixaalu": "Preta",fotalu: "aluno3.png"},
             ];
         var la = alunos.length;
 
@@ -113,7 +115,7 @@ var WebSqlDB = function(successCallback, errorCallback) {
         var parsedJson = JSON.parse(json);
         this.db.transaction(
            function (tx) {
-                var sql = "INSERT INTO alunos (nomealu, idadealu, pesoalu, faixaalu) VALUES (?, ?, ?, ?, ?)";
+                var sql = "INSERT INTO alunos (nomealu, idadealu, pesoalu, faixaalu, fotalu) VALUES (?, ?, ?, ?, ?)";
                 tx.executeSql(sql, [parsedJson.nomealu, parsedJson.idadealu, parsedJson.pesoalu, parsedJson.faixaalu, parsedJson.fotalu], function(tx, result) {
                     // If results rows
                     callback(result.rowsAffected === 1 ? true : false);
