@@ -159,7 +159,7 @@ function erro(error) {
                         '<ion-item id="' + alunos[i].codalu + '" class="item widget uib_w_6 item-button-right" data-uib="ionic/list_item" data-ver="0"> ' +
                         '<div class="buttons"> ' +
                         ' <button id="' + alunos[i].codalu + '" class="button button-positive"><i class="icon icon ion-edit"></i>                    </button> ' +
-                        ' <button id="' + alunos[i].codalu + '" name = "' + i + '" class="button button-assertive" click="deleteAluno"><i class="icon icon ion-trash-b"></i> ' +
+                        ' <button id="' + alunos[i].codalu + '" name = "' + i + '" class="button button-assertive" click="deleteAluno()"><i class="icon icon ion-trash-b"></i> ' +
                         ' </button>' +
                         ' </div>' +
                         '<img src="' + alunos[i].fotalu + '" height="32" width="32"> ' +
@@ -201,27 +201,30 @@ function erro(error) {
              activate_subpage("#sbpalunos");
     });
     
-    }
+     function editaluno(codalu) {
+        alert("Editar: " + codalu);
+     }
+
+     function deleteAluno(codalu) { 
+            db.deleteAluno(JSON.stringify({
+                "codalu": codalu
+            }), function (status) {
+                if (status == true) {
+                    // removendo elementos
+                    var item = document.getElementById(codalu);
+                    item.parentNode.removeChild(item);
+                }
+            });
+     }
+     
+     
+}
 
 document.addEventListener("app.Ready", register_event_handlers, false);
 })();
 
 
-function editaluno(codalu) {
-    alert("Editar: " + codalu);
-}
 
-function deleteAluno(codalu) {
-    db.deleteAluno(JSON.stringify({
-        "codalu": codalu
-    }), function (status) {
-        if (status == true) {
-            // removendo elementos
-            var item = document.getElementById(codalu);
-            item.parentNode.removeChild(item);
-        }
-    });
-}
 
 //CALLBACK DE ERRO E SUCESSO DE FOTOS
 function onErroFoto(erroFoto){

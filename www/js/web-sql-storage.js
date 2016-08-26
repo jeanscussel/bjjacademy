@@ -95,7 +95,7 @@ var WebSqlDB = function(successCallback, errorCallback) {
         );
     }
 
-/*    this.findAlunoById = function(codalu, callback) {        
+    this.findAlunoById = function(codalu, callback) {        
         this.db.transaction(
             function(tx) {
                 var sql = "SELECT * FROM alunos WHERE codalu=?";
@@ -109,7 +109,7 @@ var WebSqlDB = function(successCallback, errorCallback) {
             }
         );
     }
-*/
+
     this.insertAluno = function(json, callback) {
         // Converts a JavaScript Object Notation (JSON) string into an object.
         var parsedJson = JSON.parse(json);
@@ -125,7 +125,7 @@ var WebSqlDB = function(successCallback, errorCallback) {
     }
 
 
-/*    this.deleteAluno = function(json, callback) {
+    this.deleteAluno = function(json, callback) {
         // Converts a JavaScript Object Notation (JSON) string into an object.
         var parsedJson = JSON.parse(json);
         this.db.transaction(
@@ -136,7 +136,7 @@ var WebSqlDB = function(successCallback, errorCallback) {
                 });
             }
         );
-    }*/
+    }
     
     // inicializando base de dados
     this.initializeDatabase(successCallback, errorCallback);
