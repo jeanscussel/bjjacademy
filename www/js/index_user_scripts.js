@@ -68,6 +68,26 @@ function erro(error) {
     {
         uib_sb.close_sidebar($("#sbmenu"));
          /*global activate_subpage */
+        
+         // listar professores
+            db.findProfessorAll(function (professores) {
+                // limpando a lista
+                $("#lstprofessores").html("");
+                for (var i = 0; i < professores.length; i++) {
+                    // adicionando os itens na lista
+                    $("#lstprofessores").prepend(
+                        '<ion-item id="' + professores[i].codprof + '" class="item widget uib_w_6 item-button-right" data-uib="ionic/list_item" data-ver="0"> ' +
+                        '<div class="buttons"> ' +
+                        ' <button id="' + professores[i].codprof + '" class="button button-positive"><i class="icon icon ion-edit"></i>                    </button> ' +
+                        ' <button id="' + professores[i].codprof + '" name = "' + i + '" class="button button-assertive" click="deleteProfessor()"><i class="icon icon ion-trash-b"></i> ' +
+                        ' </button>' +
+                        ' </div>' +
+                        '<img src="' + professores[i].fotprof + '" height="32" width="32"> ' +
+                        professores[i].nomeprof + ' - ' + professores[i].faixaprof + '</ion-item>'
+                    );
+                }
+            });
+        
          activate_subpage("#sbpprofessores"); 
          return false;
     });
@@ -132,16 +152,22 @@ function erro(error) {
 /* button  #btnsalvarprofessor */
     $(document).on("click", "#btnsalvarprofessor", function(evt)
     {
-        navigator.notification.confirm(
-         'Deseja realmente salvar?',
-         function (buttonIndex) {
-             if(buttonIndex == 1) {
-                 //salvar
-                 navigator.notification.beep(1);
-             }
-         });  
-        /* your code goes here */ 
+       db.insertProfessores(JSON.stringify({
+                "nomeprof": $("#txtnomeprofessor").val(),
+                "idadeprof": $("#txtidadeprofessor").val(),
+                "pesoprof": $("#txtpesoprofessor").val(),
+                "faixaprof": $("#txtfaixaprofessor").val(),
+                "fotprof": $("#imgprofessor").attr('src')
+            }), function(status){
+                if (status === true){
+                    navigator.notification.alert(
+                        "Professor cadastrado com sucesso!"
+                    );
+                }    
+            });
+         
          return false;
+    
     }); 
         
 /* button  #btnalunos */
@@ -188,17 +214,17 @@ function erro(error) {
                 "faixaalu": $("#txtfaixaaluno").val(),
                 "fotalu": $("#imgaluno").attr('src')
             }), function(status){
-                if (status == true){
+                if (status === true){
                     navigator.notification.alert(
                         "Aluno cadastrado com sucesso!"
                     );
                 }    
             });
-         
-         return false;
-        
+                 
              /*global activate_subpage */
              activate_subpage("#sbpalunos");
+         return false;
+
     });
     
      function editaluno(codalu) {
@@ -209,7 +235,7 @@ function erro(error) {
             db.deleteAluno(JSON.stringify({
                 "codalu": codalu
             }), function (status) {
-                if (status == true) {
+                if (status === true) {
                     // removendo elementos
                     var item = document.getElementById(codalu);
                     item.parentNode.removeChild(item);
