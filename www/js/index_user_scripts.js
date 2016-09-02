@@ -149,26 +149,6 @@ function erro(error) {
          return false;
     });
     
-/* button  #btnsalvarprofessor */
-    $(document).on("click", "#btnsalvarprofessor", function(evt)
-    {
-       db.insertProfessores(JSON.stringify({
-                "nomeprof": $("#txtnomeprofessor").val(),
-                "idadeprof": $("#txtidadeprofessor").val(),
-                "pesoprof": $("#txtpesoprofessor").val(),
-                "faixaprof": $("#txtfaixaprofessor").val(),
-                "fotprof": $("#imgprofessor").attr('src')
-            }), function(status){
-                if (status === true){
-                    navigator.notification.alert(
-                        "Professor cadastrado com sucesso!"
-                    );
-                }    
-            });
-         
-         return false;
-    
-    }); 
         
 /* button  #btnalunos */
     $(document).on("click", "#btnalunos", function(evt)
@@ -244,7 +224,30 @@ function erro(error) {
      }
      
      
-}
+    /* button  #btnincluirprofessor */
+    $(document).on("click", "#btnincluirprofessor", function(evt)
+    {
+        navigator.notification.alert(
+            "Esse alert funciona!"
+        );
+       db.insertProfessor(JSON.stringify({
+                "nomeprof": $("#txtnomeprofessor").val(),
+                "idadeprof": $("#txtidadeprofessor").val(),
+                "pesoprof": $("#txtpesoprofessor").val(),
+                "faixaprof": $("#txtfaixaprofessor").val(),
+                "fotprof": $("#imgprofessor").attr('src')
+            }), function(status){
+                if (status === true){
+                    navigator.notification.alert(
+                        "Professor cadastrado com sucesso!"
+                    );
+                }    
+            });
+        /* your code goes here */ 
+         return false;
+    });
+    
+    }
 
 document.addEventListener("app.Ready", register_event_handlers, false);
 })();
