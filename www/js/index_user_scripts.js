@@ -227,9 +227,6 @@ function erro(error) {
     /* button  #btnincluirprofessor */
     $(document).on("click", "#btnincluirprofessor", function(evt)
     {
-        navigator.notification.alert(
-            "Esse alert funciona!"
-        );
        db.insertProfessor(JSON.stringify({
                 "nomeprof": $("#txtnomeprofessor").val(),
                 "idadeprof": $("#txtidadeprofessor").val(),
